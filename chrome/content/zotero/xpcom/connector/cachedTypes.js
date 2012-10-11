@@ -45,7 +45,7 @@ Zotero.Connector_Types = new function() {
 			for(var id in Zotero.Connector_Types.schema[schemaType]) {
 				var entry = this[schemaType][id];
 				// opera doesnt like unshift on objects
-				if (Zoter.isOpera)
+				if (Zotero.isOpera)
 					delete entry[id];
 				else
 					entry.unshift(parseInt(id, 10));
