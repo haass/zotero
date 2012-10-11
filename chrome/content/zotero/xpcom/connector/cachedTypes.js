@@ -44,7 +44,11 @@ Zotero.Connector_Types = new function() {
 			this[schemaType] = Zotero.Utilities.deepCopy(Zotero.Connector_Types.schema[schemaType]);
 			for(var id in Zotero.Connector_Types.schema[schemaType]) {
 				var entry = this[schemaType][id];
-				entry.unshift(parseInt(id, 10));
+				// opera doesnt like unshift on objects
+				if (Zoter.isOpera)
+					delete entry[id];
+				else
+					entry.unshift(parseInt(id, 10));
 				this[schemaType][entry[1]/* name */] = entry;
 			}
 		}
